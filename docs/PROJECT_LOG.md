@@ -13,15 +13,15 @@
 | 7 | Testing and refinement | Not started |
 | 8 | Documentation and future expansion | Not started |
 
-## Milestone 1 progress
+## Milestone 1 Complete
 
 - [x] Existing AL project confirmed in `AL/`
 - [x] .NET SDK 10.0.404 verified
 - [x] `docs/` and `DOTNET/` folders created
 - [x] `.gitignore` created, Git repository initialised
-- [ ] First commit
-- [ ] AL project compiles and publishes to BC260
-- [ ] .NET project created in `DOTNET/LUC.StudentPortal`
+- [ x ] First commit
+- [ x ] AL project compiles and publishes to BC260
+- [ x ] .NET project created in `DOTNET/LUC.StudentPortal`
 
 ## Decisions
 
