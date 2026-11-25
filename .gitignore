@@ -1,0 +1,25 @@
+﻿# ---------- AL / Business Central ----------
+.alpackages/
+.snapshots/
+*.app
+rad.json
+.altestrunner/
+
+# ---------- .NET ----------
+bin/
+obj/
+.vs/
+*.user
+*.suo
+TestResults/
+
+# ---------- Secrets and local config ----------
+.env
+.env.*
+appsettings.Development.json
+appsettings.Local.json
+*.pfx
+
+# ---------- OS / editor noise ----------
+Thumbs.db
+.DS_Store

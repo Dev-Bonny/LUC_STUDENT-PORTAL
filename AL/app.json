@@ -1,0 +1,32 @@
+{
+  "id": "04e782e7-6d17-494e-bb15-e1d6b50f8bbe",
+  "name": "LUC_STUDENT PORTAL",
+  "publisher": "LAKESIDE UNIVERSITY COLLEGE",
+  "version": "1.0.0.0",
+  "brief": "Student registration and management extension for Lakeside University College",
+  "description": "An extension providing student registration data structures and APIs for integration with the Lakeside Student Portal.",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "26.0.0.0",
+  "idRanges": [
+    {
+      "from": 50100,
+      "to": 50149
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "15.0",
+  "features": [
+    "NoImplicitWith"
+  ]
+}
