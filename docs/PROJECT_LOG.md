@@ -68,3 +68,20 @@
 - Number series LUCSTUD (LUC-000001 to LUC-999999) configured in the Lakeside company.
 - "Open for Registration" defaults to false: new programmes are hidden from the portal until staff open them.
 - Department and Faculty are plain text on LUC Programme for now (proper tables belong to the academic-programmes module).
+
+## Milestone 3 progress (Step 5)
+
+- LUC Student table completed: academic fields (20-29), status and system fields (30-32).
+- Department, Faculty and Programme Name are FlowFields from LUC Programme (derived, never typed).
+- BC system fields used instead of custom ones: SystemId (the API "id", the portal's BC reference), SystemCreatedAt, SystemModifiedAt.
+- Student number assigned in OnInsert from the LUCSTUD series.
+- Setting Status to Active requires the essential fields and stamps Admission Date if empty.
+- Active students cannot be deleted.
+- Programme "open for registration" is enforced by the portal dropdown. BC does not block staff from assigning a closed programme.
+
+## Milestone 3: object ID clash with libManagement
+
+- Publishing failed: pages 50101 and 50102 were also defined by the libManagement extension (D:\LIBRARY_MANAGEMENT\library\libManagement), which declares the same ID range 50100-50149.
+- Fix: renumbered LUC Student List to 50115 and LUC Student Card to 50116. Tables were untouched (they hold data). Range in app.json unchanged.
+- The two projects still share a range. Before adding any new object, run the ID clash check (compare object type + ID across both projects).
+- Object plan update: pages 50101/50102 belong to libManagement. LUC pages: 50111, 50114, 50115, 50116.
