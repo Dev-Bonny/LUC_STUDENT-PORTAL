@@ -85,3 +85,6 @@
 - Fix: renumbered LUC Student List to 50115 and LUC Student Card to 50116. Tables were untouched (they hold data). Range in app.json unchanged.
 - The two projects still share a range. Before adding any new object, run the ID clash check (compare object type + ID across both projects).
 - Object plan update: pages 50101/50102 belong to libManagement. LUC pages: 50111, 50114, 50115, 50116.
+
+
+- BC license date filter only allows months 11, 12, 01, 02. Test dates (birth dates, admission dates) must fall in those months. After February, Today() will be rejected too, so activation (which stamps the admission date) will fail until the license or environment is changed.
