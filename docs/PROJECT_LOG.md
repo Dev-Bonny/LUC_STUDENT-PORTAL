@@ -51,3 +51,13 @@
 - Confirm the BC API port and whether OData services are enabled (Milestone 3).
 - Choose the BC authentication method (Milestone 6).
 - Confirm Data Protection Act treatment of the Gender field if the project goes beyond learning.
+- Country/Region list in the Lakeside company is not empty: Kenya exists with code KEN (three-letter ISO codes). Use three-letter codes for any countries added later. Add more countries before Milestone 5.
+
+## Milestone 3 design refinements
+
+- Correction to Milestone 2: duplicate prevention in BC is enforced in AL code (OnValidate/OnInsert),
+  not with unique keys, because unique keys cannot ignore empty values (staff-created students have
+  no portal Submission ID and card pages insert before fields are filled).
+- Added enums 50112 "LUC Gender" and 50113 "LUC ID Document Type"; ID document type + number identify a person.
+- Date of birth range in BC is 16 to 80 years.
+- Working company for the project: "Lakeside University College" (id 511c5f36-00e7-f111-8af0-e86a64f8f1c5). CRONUS is untouched.
