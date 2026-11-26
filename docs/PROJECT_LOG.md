@@ -61,3 +61,10 @@
 - Added enums 50112 "LUC Gender" and 50113 "LUC ID Document Type"; ID document type + number identify a person.
 - Date of birth range in BC is 16 to 80 years.
 - Working company for the project: "Lakeside University College" (id 511c5f36-00e7-f111-8af0-e86a64f8f1c5). CRONUS is untouched.
+## Milestone 3 progress (Step 4)
+
+- Added table 50105 "LUC Programme", page 50114 "LUC Programme List" (new ID: the plan lacked a maintenance page).
+- Added table 50110 "LUC Student Setup" (singleton) and page 50111 "LUC Student Setup" holding the number series.
+- Number series LUCSTUD (LUC-000001 to LUC-999999) configured in the Lakeside company.
+- "Open for Registration" defaults to false: new programmes are hidden from the portal until staff open them.
+- Department and Faculty are plain text on LUC Programme for now (proper tables belong to the academic-programmes module).
