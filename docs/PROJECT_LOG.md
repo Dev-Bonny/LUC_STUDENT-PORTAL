@@ -6,7 +6,7 @@
 |---|---|---|
 | 1 | Project structure and environment verification |  Complete |
 | 2 | Requirements and system design |  Completed |
-| 3 | Business Central development | Not started |
+| 3 | Business Central development | Completed |
 | 4 | .NET foundation | Not started |
 | 5 | Student registration interface | Not started |
 | 6 | Business Central integration | Not started |
@@ -85,6 +85,16 @@
 - Fix: renumbered LUC Student List to 50115 and LUC Student Card to 50116. Tables were untouched (they hold data). Range in app.json unchanged.
 - The two projects still share a range. Before adding any new object, run the ID clash check (compare object type + ID across both projects).
 - Object plan update: pages 50101/50102 belong to libManagement. LUC pages: 50111, 50114, 50115, 50116.
+
+
+Milestone 3 progress (Step 7)
+
+- Added API pages 50103 "LUC Student API" and 50106 "LUC Programme API" (publisher luc, group registration, version v1.0). Both served on port 7048.
+- Student API: create and read only (no modify, no delete). studentNumber, status, admissionDate, yearOfStudy and derived fields are read-only.
+- Idempotency check for the portal: GET students?$filter=portalSubmissionId eq <guid>.
+- Programme API is fully read-only. Portal dropdown query: programmes?$filter=openForRegistration eq true.
+- Verified from PowerShell: programme list, create, lookup by submission ID, duplicate submission rejected, duplicate identity rejected, invalid academic year rejected, status cannot be forced to Active.
+- Codeunit 50104 not needed yet (logic lives in table triggers). ID stays reserved.
 
 
 - BC license date filter only allows months 11, 12, 01, 02. Test dates (birth dates, admission dates) must fall in those months. After February, Today() will be rejected too, so activation (which stamps the admission date) will fail until the license or environment is changed.
