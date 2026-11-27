@@ -98,3 +98,21 @@ Milestone 3 progress (Step 7)
 
 
 - BC license date filter only allows months 11, 12, 01, 02. Test dates (birth dates, admission dates) must fall in those months. After February, Today() will be rejected too, so activation (which stamps the admission date) will fail until the license or environment is changed.
+
+Miilestone 4:
+- Email confirmation is off (RequireConfirmedAccount = false) because there is no email sender yet. Enable it with the Notifications module.
+## Milestone 4 progress (Steps 1-4)
+
+- SQL Server instance localhost\BCDEMO verified: Windows login has dbcreator and sysadmin. The portal gets its own database, LUC_StudentPortal, separate from Business Central's database.
+- Packages: dotnet add package picked 11.0.0 (targets net11.0) and failed with NU1202 on net10.0. Fix: pinned Microsoft.EntityFrameworkCore.SqlServer, Microsoft.AspNetCore.Identity.EntityFrameworkCore and Microsoft.EntityFrameworkCore.Design to the latest stable 10.0.x, and installed dotnet-ef at 10.0.x to match. Lesson: pin versions to the target framework.
+- Added Data/ApplicationUser.cs (IdentityUser plus CreatedAtUtc) and Data/ApplicationDbContext.cs (IdentityDbContext of ApplicationUser). Personal registration data stays out of the account and will live in submissions (Milestone 5).
+- Connection string DefaultConnection in appsettings.json uses Trusted_Connection (no password in the file).
+- Program.cs: registered the DbContext and Identity with ApplicationUser and IdentityRole. Password: minimum 10 characters with a digit, upper-case and lower-case letter. Unique email. Lockout after 5 failed attempts for 15 minutes. Cookie paths /Account/Login and /Account/AccessDenied. app.UseAuthentication() runs before app.UseAuthorization().
+- First migration InitialIdentity (20261127091533) created in Data/Migrations and applied. The database has 8 tables: the 7 Identity tables plus __EFMigrationsHistory. AspNetUsers includes CreatedAtUtc.
+- dotnet run needs --project "DOTNET\LUC.StudentPortal" when run from the repository root.
+- The app starts at http://localhost:5221.
+
+## Open issues (additions)
+
+- Email confirmation is off (RequireConfirmedAccount = false) because there is no email sender yet. Enable it with the Notifications module.
+- HTTPS redirect warning at startup: the launch profile has no HTTPS port. Handle when preparing deployment.
