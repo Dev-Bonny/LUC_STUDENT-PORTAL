@@ -7,7 +7,7 @@
 | 1 | Project structure and environment verification |  Complete |
 | 2 | Requirements and system design |  Completed |
 | 3 | Business Central development | Completed |
-| 4 | .NET foundation | Not started |
+| 4 | .NET foundation | Complete |
 | 5 | Student registration interface | Not started |
 | 6 | Business Central integration | Not started |
 | 7 | Testing and refinement | Not started |
