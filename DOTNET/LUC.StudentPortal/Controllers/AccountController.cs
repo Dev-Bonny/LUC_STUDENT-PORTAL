@@ -37,6 +37,7 @@ public class AccountController : Controller
         if (result.Succeeded)
         {
             _logger.LogInformation("Portal account created: {UserId}", user.Id);
+            await _userManager.AddToRoleAsync(user, AppRoles.Student);
             await _signInManager.SignInAsync(user, isPersistent: false);
             return RedirectToAction("Index", "Home");
         }

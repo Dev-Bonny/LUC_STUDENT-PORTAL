@@ -123,3 +123,12 @@ Miilestone 4:
 - Security decisions: forms carry anti-forgery tokens; Logout is POST only; returnUrl is followed only if it is a local URL (open redirect protection); one generic message for failed logins; lockout enabled (5 failed attempts, 15 minutes); logs record the user ID, not the email address.
 - Views: Account/Register, Account/Login, Account/AccessDenied. Added Shared/_LoginPartial to the navbar in _Layout.
 - Manual test checklist: weak password rejected with Identity messages; mismatched passwords rejected; valid registration creates an AspNetUsers row with a hashed password (the plain password is stored nowhere); wrong password shows the generic message; five wrong attempts lock the account. Edit this list if any check behaved differently.
+## Milestone 4 progress (Step 6)
+
+- Roles: Student and Admin (constants in Data/AppRoles.cs). A Registry role was dropped: registry staff work in Business Central, so the portal has no use for it yet.
+- Data/IdentitySeeder.cs creates the roles and, if configured, the first administrator. It is idempotent and runs at startup from Program.cs inside a manual service scope.
+- The administrator email and password come from user secrets (SeedAdmin:Email, SeedAdmin:Password), stored outside the repository. For production, create the first administrator through a controlled one-off process.
+- New registrations are added to the Student role before sign-in, so the login cookie carries the role. Role changes take effect at the next login.
+- AdminController is protected with [Authorize(Roles = AppRoles.Admin)]. The Admin menu link is shown only to admins, but the attribute is the real protection.
+- Accounts created before Step 6 have no role (the Step 5 test account).
+- Manual tests: anonymous user is sent to login with a returnUrl; no-role and Student accounts get Access Denied on /Admin; the admin account opens it and returns there after login. Edit this line if any check behaved differently.
