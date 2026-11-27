@@ -101,7 +101,7 @@ Milestone 3 progress (Step 7)
 
 Miilestone 4:
 - Email confirmation is off (RequireConfirmedAccount = false) because there is no email sender yet. Enable it with the Notifications module.
-## Milestone 4 progress (Steps 1-4)
+## Milestone 4 progress (Steps 1-5)
 
 - SQL Server instance localhost\BCDEMO verified: Windows login has dbcreator and sysadmin. The portal gets its own database, LUC_StudentPortal, separate from Business Central's database.
 - Packages: dotnet add package picked 11.0.0 (targets net11.0) and failed with NU1202 on net10.0. Fix: pinned Microsoft.EntityFrameworkCore.SqlServer, Microsoft.AspNetCore.Identity.EntityFrameworkCore and Microsoft.EntityFrameworkCore.Design to the latest stable 10.0.x, and installed dotnet-ef at 10.0.x to match. Lesson: pin versions to the target framework.
@@ -116,3 +116,10 @@ Miilestone 4:
 
 - Email confirmation is off (RequireConfirmedAccount = false) because there is no email sender yet. Enable it with the Notifications module.
 - HTTPS redirect warning at startup: the launch profile has no HTTPS port. Handle when preparing deployment.
+
+- On Step 5,  i have done the following:
+- Added view models RegisterViewModel and LoginViewModel with data annotations. Password strength rules stay in the Identity options in Program.cs (one source of truth).
+- Added AccountController (Register, Login, Logout, AccessDenied) using UserManager and SignInManager through dependency injection.
+- Security decisions: forms carry anti-forgery tokens; Logout is POST only; returnUrl is followed only if it is a local URL (open redirect protection); one generic message for failed logins; lockout enabled (5 failed attempts, 15 minutes); logs record the user ID, not the email address.
+- Views: Account/Register, Account/Login, Account/AccessDenied. Added Shared/_LoginPartial to the navbar in _Layout.
+- Manual test checklist: weak password rejected with Identity messages; mismatched passwords rejected; valid registration creates an AspNetUsers row with a hashed password (the plain password is stored nowhere); wrong password shows the generic message; five wrong attempts lock the account. Edit this list if any check behaved differently.
